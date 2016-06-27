@@ -38,7 +38,8 @@ class Engine
 
   private:
     uint8_t _i2cAddress;
-    
+
+    void changeMotorState(unsigned char motorDirection, unsigned char motorSpeedA , unsigned char motorSpeedB);
     void setMotorSpeedAB(unsigned char motorSpeedA , unsigned char motorSpeedB);
     void setMotorPWMFrequence(unsigned char pwmFrequence);
     void setMotorDirection(unsigned char motorDirection);

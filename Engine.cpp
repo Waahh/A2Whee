@@ -19,40 +19,38 @@ void Engine::setI2CAddress(uint8_t i2cAddress)
 void Engine::moveForward()
 {
   Serial.println("Moving forward");
-  setMotorSpeedAB(50,45);
-  delay(10); //this delay needed
-  setMotorDirection(DIRECTION_FORWARD);
+  changeMotorState(DIRECTION_FORWARD, 50, 50);
 }
 
 void Engine::moveBackward()
 {
   Serial.println("Moving backward");
-  setMotorSpeedAB(50,50);
-  delay(10); //this delay needed
-  setMotorDirection(DIRECTION_BACKWARD);
+  changeMotorState(DIRECTION_BACKWARD, 50, 50);
 }
 
 void Engine::turnLeft()
 {
   Serial.println("Turning left");
-  setMotorSpeedAB(35,35);
-  delay(10); //this delay needed
-  setMotorDirection(DIRECTION_LEFT);
+  changeMotorState(DIRECTION_LEFT, 35, 35);
 }
 
 void Engine::turnRight()
 {
   Serial.println("Turning right");
-  setMotorSpeedAB(35,35);
-  delay(10); //this delay needed
-  setMotorDirection(DIRECTION_RIGHT);
+  changeMotorState(DIRECTION_RIGHT, 35, 35);
 }
 
 void Engine::stop()
 {
   Serial.println("Stopping");
-  setMotorSpeedAB(0,0);
-  delay(10); //this delay needed
+  changeMotorState(DIRECTION_FORWARD, 0, 0);
+}
+
+void Engine::changeMotorState(unsigned char motorDirection, unsigned char motorSpeedA , unsigned char motorSpeedB)
+{
+  setMotorSpeedAB(motorSpeedA, motorSpeedB);
+  delay(10); // required delay
+  setMotorDirection(motorDirection);
 }
 
 void Engine::setMotorSpeedAB(unsigned char motorSpeedA , unsigned char motorSpeedB)
